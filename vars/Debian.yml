@@ -1,0 +1,3 @@
+---
+etckeeper_highlevel_package_manager: 'apt'
+etckeeper_lowlevel_package_manager: 'dpkg'

@@ -1,0 +1,72 @@
+---
+- name: Assert platform is supported
+  tags: etckeeper
+  assert:
+    that:
+      - ansible_os_family in ['Debian']
+
+- name: Assert etckeeper_vcs is valid
+  tags: etckeeper
+  assert:
+    that:
+      - etckeeper_vcs in ['git', 'hg', 'bzr', 'darcs']
+
+
+- include_vars: "{{ ansible_os_family }}.yml"
+  tags: etckeeper
+
+
+- name: Install Git
+  tags: etckeeper
+  apt:
+    state=installed
+    name=git
+  when: etckeeper_vcs == 'git'
+
+- name: Install Mercurial
+  tags: etckeeper
+  apt:
+    state=installed
+    name=mercurial
+  when: etckeeper_vcs == 'hg'
+
+- name: Install Bazaar
+  tags: etckeeper
+  apt:
+    state=installed
+    name=brz
+  when: etckeeper_vcs == 'brz'
+
+- name: Install Darcs
+  tags: etckeeper
+  apt:
+    state=installed
+    name=darcs
+  when: etckeeper_vcs == 'darcs'
+
+
+# Install the configuration first.
+#   This ensures initialization of etckeeper uses the configured values.
+- name: Install etckeeper configuration directory
+  tags: etckeeper
+  file:
+    state=directory
+    mode=0755
+    owner=root
+    group=root
+    dest=/etc/etckeeper
+
+- name: Install etckeeper configuration
+  tags: etckeeper
+  template:
+    src=etckeeper.j2
+    dest=/etc/etckeeper/etckeeper.conf
+    mode=0644
+    owner=root
+    group=root
+
+- name: Install etckeeper
+  tags: etckeeper
+  apt:
+    state=installed
+    name=etckeeper

@@ -1,0 +1,34 @@
+#   ____________________ 
+#  < Managed by Ansible >
+#   -------------------- 
+#          \   ^__^
+#           \  (oo)\_______
+#              (__)\       )\/\
+#                  ||----w |
+#                  ||     ||
+#
+
+VCS="{{ etckeeper_vcs }}"
+
+{% if etckeeper_git_commit_options != '' %}
+GIT_COMMIT_OPTIONS="{{ etckeeper_git_commit_options }}"
+{% endif %}
+{% if etckeeper_hg_commit_options != '' %}
+HG_COMMIT_OPTIONS="{{ etckeeper_hg_commit_options }}"
+{% endif %}
+{% if etckeeper_bzr_commit_options != '' %}
+BZR_COMMIT_OPTIONS="{{ etckeeper_bzr_commit_options }}"
+{% endif -%}
+{% if etckeeper_darcs_commit_options != '' %}
+DARCS_COMMIT_OPTIONS="{{ etckeeper_darcs_commit_options }}"
+{% endif -%}
+
+{% if etckeeper_avoid_daily_autocommits %}
+AVOID_DAILY_AUTOCOMMITS=1
+{% endif %}
+{% if etckeeper_avoid_commit_before_install %}
+AVOID_COMMIT_BEFORE_INSTALL=1
+{% endif %}
+
+HIGHLEVEL_PACKAGE_MANAGER={{ etckeeper_highlevel_package_manager }}
+LOWLEVEL_PACKAGE_MANAGER={{ etckeeper_lowlevel_package_manager }}
