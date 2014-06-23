@@ -16,6 +16,13 @@
   tags: etckeeper
 
 
+- name: Update apt package cache
+  tags: etckeeper
+  when: ansible_os_family == 'Debian'
+  apt:
+    update_cache=yes
+    cache_valid_time=3600
+
 - name: Install Git
   tags: etckeeper
   apt:
