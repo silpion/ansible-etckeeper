@@ -25,31 +25,31 @@
 
 - name: Install Git
   tags: etckeeper
+  when: etckeeper_vcs == 'git'
   apt:
     state=installed
     name=git
-  when: etckeeper_vcs == 'git'
 
 - name: Install Mercurial
   tags: etckeeper
+  when: etckeeper_vcs == 'hg'
   apt:
     state=installed
     name=mercurial
-  when: etckeeper_vcs == 'hg'
 
 - name: Install Bazaar
   tags: etckeeper
+  when: etckeeper_vcs == 'brz'
   apt:
     state=installed
     name=brz
-  when: etckeeper_vcs == 'brz'
 
 - name: Install Darcs
   tags: etckeeper
+  when: etckeeper_vcs == 'darcs'
   apt:
     state=installed
     name=darcs
-  when: etckeeper_vcs == 'darcs'
 
 
 # Install the configuration first.
