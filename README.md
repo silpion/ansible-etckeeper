@@ -12,9 +12,9 @@ None.
 
 * ``etckeeper_vcs``: Configure the VCS etckeeper shall use (default: ``git``, values: [``git``, ``hg``, ``bzr``, ``darcs``])
 * ``etckeeper_git_commit_options``: Configure Git commit options for etckeeper (default: ````)
-* ``etckeeper_hg_commit_options``: Configure Mercurial commit options for etckeeper (default: ````)
-* ``etckeeper_bzr_commit_options``: Configure Bazaar commit options for etckeeper (default: ````)
-* ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (default: ````)
+* ``etckeeper_hg_commit_options``: Configure Mercurial commit options for etckeeper (default: "")
+* ``etckeeper_bzr_commit_options``: Configure Bazaar commit options for etckeeper (default: "")
+* ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (default: "")
 * ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (default: ``false``)
 * ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (default: ``false``)
 
