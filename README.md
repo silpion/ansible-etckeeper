@@ -11,7 +11,7 @@ None.
 # Role Variables
 
 * ``etckeeper_vcs``: Configure the VCS etckeeper shall use (default: ``git``, values: [``git``, ``hg``, ``bzr``, ``darcs``])
-* ``etckeeper_git_commit_options``: Configure Git commit options for etckeeper (default: ````)
+* ``etckeeper_git_commit_options``: Configure Git commit options for etckeeper (default: "")
 * ``etckeeper_hg_commit_options``: Configure Mercurial commit options for etckeeper (default: "")
 * ``etckeeper_bzr_commit_options``: Configure Bazaar commit options for etckeeper (default: "")
 * ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (default: "")
