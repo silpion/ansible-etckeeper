@@ -9,47 +9,11 @@
   tags: etckeeper
   assert:
     that:
-      - etckeeper_vcs in ['git', 'hg', 'bzr', 'darcs']
+      - etckeeper_vcs in ['git', 'mercurial', 'bzr', 'darcs']
 
 
 - include_vars: "{{ ansible_os_family }}.yml"
   tags: etckeeper
-
-
-- name: Update apt package cache
-  tags: etckeeper
-  when: ansible_os_family == 'Debian'
-  apt:
-    update_cache=yes
-    cache_valid_time=3600
-
-- name: Install Git
-  tags: etckeeper
-  when: etckeeper_vcs == 'git'
-  apt:
-    state=installed
-    name=git
-
-- name: Install Mercurial
-  tags: etckeeper
-  when: etckeeper_vcs == 'hg'
-  apt:
-    state=installed
-    name=mercurial
-
-- name: Install Bazaar
-  tags: etckeeper
-  when: etckeeper_vcs == 'brz'
-  apt:
-    state=installed
-    name=brz
-
-- name: Install Darcs
-  tags: etckeeper
-  when: etckeeper_vcs == 'darcs'
-  apt:
-    state=installed
-    name=darcs
 
 
 # Install the configuration first.
@@ -72,8 +36,6 @@
     owner=root
     group=root
 
-- name: Install etckeeper
-  tags: etckeeper
-  apt:
-    state=installed
-    name=etckeeper
+
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
