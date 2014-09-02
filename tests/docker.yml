@@ -15,5 +15,5 @@ ssh_host: localhost
 
 docker_img: silpion/ubuntu-upstart-sshkey
 docker_tag: 0.0.1
-docker_run: "--detach --name ansibleetckeepertest --net=bridge --publish {{ ssh_port }}:22"
+docker_run: "--detach --name ansibleetckeepertest --hostname ansibleetckeepertest --net=bridge --publish {{ ssh_port }}:22"
 docker_cmd: "/sbin/init"
