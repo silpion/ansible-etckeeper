@@ -8,7 +8,7 @@
 #                  ||     ||
 #
 
-{% if etckeeper_vcs = 'mercurial'
+{% if etckeeper_vcs == 'mercurial' %}
 VCS="hg"
 {% else %}
 VCS="{{ etckeeper_vcs }}"
