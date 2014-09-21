@@ -15,6 +15,7 @@ None.
 * ``etckeeper_hg_commit_options``: Configure Mercurial commit options for etckeeper (default: "")
 * ``etckeeper_bzr_commit_options``: Configure Bazaar commit options for etckeeper (default: "")
 * ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (default: "")
+* ``etckeeper_avoid_special_file_warning``: Configure etckeeper to set AVOID_SPECIAL_FILE_WARNING=1 (default: ``false``)
 * ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (default: ``false``)
 * ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (default: ``false``)
 
