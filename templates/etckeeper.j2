@@ -1,3 +1,4 @@
+{% if etckeeper_with_cow %}
 #   ____________________ 
 #  < Managed by Ansible >
 #   -------------------- 
@@ -7,6 +8,9 @@
 #                  ||----w |
 #                  ||     ||
 #
+{% else %}
+# {{ ansible_managed }}
+{% endif %}
 
 VCS="{{ etckeeper_vcs }}"
 

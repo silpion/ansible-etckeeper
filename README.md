@@ -18,6 +18,7 @@ None.
 * ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (default: ``false``)
 * ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (default: ``false``)
 
+* ``etckeeper_with_cow``: Change wether the configuration files 'Managed by ansible' warning should be said by a cow or not (defaut: ``true``)
 
 # Dependencies
 
