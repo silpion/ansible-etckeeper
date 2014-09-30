@@ -1,17 +1,12 @@
-# Role Name
+# ansible-etckeeper
 
 Install and configure etckeeper.
 
+## Requirements
 
-# Requirements
+None.
 
-None for Debian.
-
-For RedHat family systems EPEL (or another repository hosting etckeeper) will
-need to be pre configured.
-
-
-# Role Variables
+## Role Variables
 
 * ``etckeeper_vcs``: Configure the VCS etckeeper shall use (default: ``git``, values: [``git``, ``mercurial``, ``bzr``, ``darcs``])
 * ``etckeeper_git_commit_options``: Configure Git commit options for etckeeper (default: "")
@@ -20,22 +15,28 @@ need to be pre configured.
 * ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (default: "")
 * ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (default: ``false``)
 * ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (default: ``false``)
-
 * ``etckeeper_with_cow``: Change wether the configuration files 'Managed by ansible' warning should be said by a cow or not (defaut: ``true``)
 
-# Dependencies
+### ansible_os_family == 'RedHat'
+
+* ``etckeeper_epel_version``: Red Hat EPEL version to configure (int, default: ``6``)
+* ``etckeeper_epel_baseurl``: Red Hat EPEL base url (string, default: ``http://download.fedoraproject.org/pub/epel``)
+* ``etckeeper_epel_mirrorurl``: Red Hat EPEL mirror url (string, default: ``https://mirrors.ferdoraproject.org/metalink``)
+* ``etckeeper_epel_enable_debug``: Enable EPEL debug repository (bool, default: ``false``)
+* ``etckeeper_epel_enable_source``: Enable EPEL source repository (bool, default: ``false``)
+
+## Dependencies
 
 None.
 
-
-# Example Playbook
+## Example Playbook
 
     - hosts: servers
       roles:
          - { role: etckeeper, etckeeper_vcs: darcs }
 
 
-# License
+## License
 
 Apache Version 2.0
 
@@ -67,6 +68,12 @@ Ruby with rake and bundler available.
 ## Author information
 
 Mark Kusch @mark.kusch silpion.de
+
+### Contributions
+
+Thanks for their thoughts and work goes to...
+
+* [Karl Goetz](https://github.com/goetzk)
 
 
 <!-- vim: set nofen ts=4 sw=4 et: -->
