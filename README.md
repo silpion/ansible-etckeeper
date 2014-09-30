@@ -8,14 +8,15 @@ None.
 
 ## Role Variables
 
-* ``etckeeper_vcs``: Configure the VCS etckeeper shall use (default: ``git``, values: [``git``, ``mercurial``, ``bzr``, ``darcs``])
-* ``etckeeper_git_commit_options``: Configure Git commit options for etckeeper (default: "")
-* ``etckeeper_hg_commit_options``: Configure Mercurial commit options for etckeeper (default: "")
-* ``etckeeper_bzr_commit_options``: Configure Bazaar commit options for etckeeper (default: "")
-* ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (default: "")
-* ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (default: ``false``)
-* ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (default: ``false``)
-* ``etckeeper_with_cow``: Change wether the configuration files 'Managed by ansible' warning should be said by a cow or not (defaut: ``true``)
+* ``etckeeper_vcs``: Configure the VCS etckeeper shall use (string, default: ``git``, values: [``git``, ``mercurial``, ``bzr``, ``darcs``])
+* ``etckeeper_git_commit_options``: Configure Git commit options for etckeeper (string, default: "")
+* ``etckeeper_hg_commit_options``: Configure Mercurial commit options for etckeeper (string, default: "")
+* ``etckeeper_bzr_commit_options``: Configure Bazaar commit options for etckeeper (string, default: "")
+* ``etckeeper_darcs_commit_options``: Configure Darcs commit options for etckeeper (string, default: "")
+* ``etckeeper_avoid_special_file_warning``: Configure etckeeper to set AVOID_SPECIAL_FILE_WARNING=1 (bool, default: ``false``)
+* ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (bool, default: ``false``)
+* ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (bool, default: ``false``)
+* ``etckeeper_with_cow``: Change wether the configuration files 'Managed by ansible' warning should be said by a flaming sheep or not (bool, default: ``true``)
 
 ### ansible_os_family == 'RedHat'
 
