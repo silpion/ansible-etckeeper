@@ -16,6 +16,10 @@
   tags: etckeeper
 
 
+- include: selinux.yml
+  tags: etckeeper
+
+
 # Install the configuration first.
 #   This ensures initialization of etckeeper uses the configured values.
 - name: Install etckeeper configuration directory
