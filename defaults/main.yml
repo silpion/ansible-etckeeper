@@ -6,6 +6,7 @@ etckeeper_hg_commit_options: ""
 etckeeper_bzr_commit_options: ""
 etckeeper_darcs_commit_options: ""
 
+etckeeper_avoid_special_file_warning: false
 etckeeper_avoid_daily_autocommits: false
 etckeeper_avoid_commit_before_install: false
 
