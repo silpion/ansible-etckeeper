@@ -5,7 +5,10 @@ Install and configure etckeeper.
 
 # Requirements
 
-None.
+None for Debian.
+
+For RedHat family systems EPEL (or another repository hosting etckeeper) will
+need to be pre configured.
 
 
 # Role Variables
@@ -18,6 +21,7 @@ None.
 * ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (default: ``false``)
 * ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (default: ``false``)
 
+* ``etckeeper_with_cow``: Change wether the configuration files 'Managed by ansible' warning should be said by a cow or not (defaut: ``true``)
 
 # Dependencies
 
@@ -40,7 +44,7 @@ Apache Version 2.0
 This role provides integration tests using the Ruby RSpec/serverspec framework
 with a few drawbacks at the time of writing this documentation.
 
-- Currently supports ansible_os_family == 'Debian' only.
+- Currently supports ansible_os_family == Debian and RedHat.
 
 Running integration tests requires a number of dependencies being
 installed. As this role uses Ruby RSpec there is the need to have

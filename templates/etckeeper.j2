@@ -1,3 +1,4 @@
+{% if etckeeper_with_cow %}
 #   ____________________ 
 #  < Managed by Ansible >
 #   -------------------- 
@@ -7,8 +8,16 @@
 #                  ||----w |
 #                  ||     ||
 #
+{% else %}
+# {{ ansible_managed }}
+{% endif %}
 
+{% if etckeeper_vcs == 'mercurial' %}
+VCS="hg"
+{% else %}
 VCS="{{ etckeeper_vcs }}"
+{% endif %}
+
 
 {% if etckeeper_git_commit_options != '' %}
 GIT_COMMIT_OPTIONS="{{ etckeeper_git_commit_options }}"

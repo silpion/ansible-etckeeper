@@ -1,0 +1,14 @@
+---
+- name: Install etckeeper VCS package RedHat
+  tags: etckeeper
+  with_flattened:
+    - etckeeper_vcs
+    - etckeeper_package_list
+  yum:
+    state=installed
+    name={{ item }}
+
+- name: Initialise etckeeper
+  tags: etckeeper
+  command: etckeeper init
+    creates=/etc/.etckeeper

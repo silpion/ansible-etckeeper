@@ -8,3 +8,6 @@ etckeeper_darcs_commit_options: ""
 
 etckeeper_avoid_daily_autocommits: false
 etckeeper_avoid_commit_before_install: false
+
+etckeeper_with_cow: true
+
