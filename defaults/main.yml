@@ -6,5 +6,16 @@ etckeeper_hg_commit_options: ""
 etckeeper_bzr_commit_options: ""
 etckeeper_darcs_commit_options: ""
 
+etckeeper_avoid_special_file_warning: false
 etckeeper_avoid_daily_autocommits: false
 etckeeper_avoid_commit_before_install: false
+
+etckeeper_with_cow: true
+
+etckeeper_epel_version: 6
+etckeeper_epel_baseurl: 'http://download.fedoraproject.org/pub/epel'
+etckeeper_epel_mirrorurl: 'https://mirrors.fedoraproject.org/metalink'
+#  enable or disable epel debug or source packages repositories
+etckeeper_epel_enable_debug: false
+etckeeper_epel_enable_source: false
+

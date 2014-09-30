@@ -1,0 +1,9 @@
+---
+etckeeper_package_list:
+  - etckeeper
+
+etckeeper_package_list_selinux:
+  - libselinux-python
+
+etckeeper_highlevel_package_manager: 'yum'
+etckeeper_lowlevel_package_manager: 'rpm'

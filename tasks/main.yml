@@ -3,7 +3,7 @@
   tags: etckeeper
   assert:
     that:
-      - ansible_os_family in ['Debian']
+      - ansible_os_family in ['Debian', 'RedHat']
 
 - name: Assert etckeeper_vcs is valid
   tags: etckeeper
@@ -13,6 +13,10 @@
 
 
 - include_vars: "{{ ansible_os_family }}.yml"
+  tags: etckeeper
+
+
+- include: selinux.yml
   tags: etckeeper
 
 
@@ -39,3 +43,7 @@
 
 - include: Debian.yml
   when: ansible_os_family == 'Debian'
+
+- include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
