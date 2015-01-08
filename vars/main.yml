@@ -1,0 +1,10 @@
+---
+etckeeper_supported_platforms:
+  - Debian
+  - RedHat
+
+etckeeper_supported_vcs:
+  - git
+  - mercurial
+  - bzr
+  - darcs

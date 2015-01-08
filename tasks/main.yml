@@ -3,16 +3,17 @@
   tags: etckeeper
   assert:
     that:
-      - ansible_os_family in ['Debian', 'RedHat']
+      - ansible_os_family in etckeeper_supported_platforms
 
 - name: Assert etckeeper_vcs is valid
   tags: etckeeper
   assert:
     that:
-      - etckeeper_vcs in ['git', 'mercurial', 'bzr', 'darcs']
+      - etckeeper_vcs in etckeeper_supported_vcs
 
 
-- include_vars: "{{ ansible_os_family }}.yml"
+- name: Include OS specific vars
+  include_vars: "{{ ansible_os_family }}.yml"
   tags: etckeeper
 
 
@@ -24,6 +25,7 @@
 #   This ensures initialization of etckeeper uses the configured values.
 - name: Install etckeeper configuration directory
   tags: etckeeper
+  sudo: yes
   file:
     state=directory
     mode=0755
@@ -33,6 +35,7 @@
 
 - name: Install etckeeper configuration
   tags: etckeeper
+  sudo: yes
   template:
     src=etckeeper.j2
     dest=/etc/etckeeper/etckeeper.conf
@@ -46,4 +49,3 @@
 
 - include: RedHat.yml
   when: ansible_os_family == 'RedHat'
-
