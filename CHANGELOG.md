@@ -1,3 +1,11 @@
+# 0.3.1
+
+Mark Kusch (4):
+      Allow github to perform integration testing
+      Update integration testing to work with Serverspec 2.N
+      Ensure tasks define sudo: yes when requiring superuser privileges
+      Abstract supported platforms and VCS in vars
+
 # 0.3.0
 
 * Add support for ansible_os_family == 'RedHat'
@@ -22,3 +30,6 @@ Mark Kusch (6):
 # 0.1.0
 
 * Initial release
+
+
+<!-- vim: set nofen ts=4 sw=4 et: -->
