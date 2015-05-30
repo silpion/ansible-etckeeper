@@ -19,3 +19,7 @@ etckeeper_epel_mirrorurl: 'https://mirrors.fedoraproject.org/metalink'
 etckeeper_epel_enable_debug: false
 etckeeper_epel_enable_source: false
 
+etckeeper_gitignore:
+  - "tor/keys/"
+etckeeper_gitignore_group:
+etckeeper_gitignore_host:
