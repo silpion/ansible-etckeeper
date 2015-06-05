@@ -13,48 +13,52 @@
 
 
 - name: Include OS specific vars
+  tags: etckeeper
   include_vars: "{{ ansible_os_family }}.yml"
-  tags: etckeeper
-
-
-- include: selinux.yml
-  tags: etckeeper
 
 
 # Install the configuration first.
 #   This ensures initialization of etckeeper uses the configured values.
 - name: Install etckeeper configuration directory
   tags: etckeeper
-  sudo: yes
+  become: true
   file:
     state=directory
-    mode=0755
-    owner=root
-    group=root
     dest=/etc/etckeeper
+    owner=0
+    group=0
+    mode=0755
 
 - name: Install etckeeper configuration
   tags: etckeeper
-  sudo: yes
+  become: true
   template:
     src=etckeeper.j2
     dest=/etc/etckeeper/etckeeper.conf
+    owner=0
+    group=0
     mode=0644
-    owner=root
-    group=root
 
 
-- include: Debian.yml
+- name: Install etckeeper packages
   tags: etckeeper
-  when: ansible_os_family == 'Debian'
+  become: true
+  with_flattened:
+    - etckeeper_vcs
+    - etckeeper_package_list
+  action: "{{ ansible_pkg_mgr }} state={{ util_package_state }} name={{ item }}"
 
-- include: RedHat.yml
+
+- name: Initialize etckeeper
   tags: etckeeper
+  become: true
   when: ansible_os_family == 'RedHat'
-
+  command: etckeeper init
+    creates=/etc/.etckeeper
 
 - name: Add entries to .gitignore
   tags: etckeeper
+  become: true
   with_flattened:
     - etckeeper_gitignore
     - etckeeper_gitignore_group
