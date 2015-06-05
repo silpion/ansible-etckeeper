@@ -45,13 +45,16 @@
 
 
 - include: Debian.yml
+  tags: etckeeper
   when: ansible_os_family == 'Debian'
 
 - include: RedHat.yml
+  tags: etckeeper
   when: ansible_os_family == 'RedHat'
 
 
 - name: Add entries to .gitignore
+  tags: etckeeper
   with_flattened:
     - etckeeper_gitignore
     - etckeeper_gitignore_group
