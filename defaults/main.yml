@@ -20,6 +20,6 @@ etckeeper_epel_enable_debug: false
 etckeeper_epel_enable_source: false
 
 etckeeper_gitignore:
-  - "tor/keys/"
-etckeeper_gitignore_group:
-etckeeper_gitignore_host:
+  - 'tor/keys/'
+etckeeper_gitignore_group: []
+etckeeper_gitignore_host: []
