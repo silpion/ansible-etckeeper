@@ -59,6 +59,7 @@
 - name: Add entries to .gitignore
   tags: etckeeper
   become: true
+  when: etckeeper_vcs == 'git'
   with_flattened:
     - etckeeper_gitignore
     - etckeeper_gitignore_group
