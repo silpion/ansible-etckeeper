@@ -49,3 +49,14 @@
 
 - include: RedHat.yml
   when: ansible_os_family == 'RedHat'
+
+
+- name: Add entries to .gitignore
+  lineinfile:
+    dest: '/etc/.gitignore'
+    line: "{{ item }}"
+    insertbefore: "BOF"
+  with_flattened:
+    - etckeeper_gitignore
+    - etckeeper_gitignore_group
+    - etckeeper_gitignore_host

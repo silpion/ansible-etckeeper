@@ -19,3 +19,12 @@ etckeeper_epel_mirrorurl: 'https://mirrors.fedoraproject.org/metalink'
 etckeeper_epel_enable_debug: false
 etckeeper_epel_enable_source: false
 
+etckeeper_gitignore:
+  ## There is no benefit in tracking tor keys and is a potential security vulnerability.
+  - "tor/keys/"
+
+  ## Those keys are usually generated upon Installation of italc and can contain both private and public keys.
+  - "italc/keys/"
+  # - "apt-cacher-ng/security.conf"
+etckeeper_gitignore_group:
+etckeeper_gitignore_host:
