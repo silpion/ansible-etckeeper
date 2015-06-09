@@ -27,22 +27,31 @@
   tags: etckeeper
   sudo: yes
   file:
-    state=directory
-    mode=0755
-    owner=root
-    group=root
-    dest=/etc/etckeeper
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+    dest: /etc/etckeeper
 
 - name: Install etckeeper configuration
   tags: etckeeper
   sudo: yes
   template:
-    src=etckeeper.j2
-    dest=/etc/etckeeper/etckeeper.conf
-    mode=0644
-    owner=root
-    group=root
+    src: etckeeper.j2
+    dest: /etc/etckeeper/etckeeper.conf
+    mode: 0644
+    owner: root
+    group: root
 
+- name: Set repository permissions
+  tags: etckeeper
+  sudo: yes
+  file:
+    state: directory
+    path: /etc/.git
+    mode: "{{ etckeeper_repository_permissions_mode }}"
+    owner: root
+    group: "{{ etckeeper_repository_group }}"
 
 - include: Debian.yml
   when: ansible_os_family == 'Debian'
