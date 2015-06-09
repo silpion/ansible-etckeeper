@@ -1,5 +1,7 @@
 ---
 etckeeper_supported_platforms:
+  - Linuxmint
+  - Ubuntu
   - Debian
   - RedHat
 
