@@ -5,6 +5,7 @@ etckeeper_supported_platforms:
 
 etckeeper_supported_vcs:
   - git
-  - mercurial
-  - bzr
-  - darcs
+  ## FIXME: Set repository permissions
+  # - mercurial
+  # - bzr
+  # - darcs
