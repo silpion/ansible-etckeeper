@@ -2,9 +2,24 @@
 
 Install and configure etckeeper.
 
+
 ## Requirements
 
 None.
+
+
+## Dependencies
+
+This role depends on [groover.util](https://github.com/silpion/ansible-util)
+role. This is configured for ``ansible-galaxy install`` in **requirements.yml**.
+
+**NOTE**: Requirements are installed as virtual user ``silpion``
+(``silpion.util``).
+
+Be sure to install required roles with
+
+    ansible-galaxy install --role-file requirements.yml
+
 
 ## Role Variables
 
@@ -16,19 +31,14 @@ None.
 * ``etckeeper_avoid_special_file_warning``: Configure etckeeper to set AVOID_SPECIAL_FILE_WARNING=1 (bool, default: ``false``)
 * ``etckeeper_avoid_daily_autocommits``: Configure etckeeper to set AVOID_DAILY_AUTOCOMMITS=1 (bool, default: ``false``)
 * ``etckeeper_avoid_commit_before_install``: Configure etckeeper to set AVOID_COMMIT_BEFORE_INSTALL=1 (bool, default: ``false``)
-* ``etckeeper_with_cow``: Change wether the configuration files 'Managed by ansible' warning should be said by a flaming sheep or not (bool, default: ``true``)
 
-### ansible_os_family == 'RedHat'
+### silpion.util variables
 
-* ``etckeeper_epel_version``: Red Hat EPEL version to configure (int, default: ``6``)
-* ``etckeeper_epel_baseurl``: Red Hat EPEL base url (string, default: ``http://download.fedoraproject.org/pub/epel``)
-* ``etckeeper_epel_mirrorurl``: Red Hat EPEL mirror url (string, default: ``https://mirrors.ferdoraproject.org/metalink``)
-* ``etckeeper_epel_enable_debug``: Enable EPEL debug repository (bool, default: ``false``)
-* ``etckeeper_epel_enable_source``: Enable EPEL source repository (bool, default: ``false``)
+See [util documentation](http://github.com/silpion/ansible-util) for
+variables maintained with util role how to configure various aspects
+of Ansible behaviour, e.g. ``util_package_state`` or ``util_template_use_cow``
+variables.
 
-## Dependencies
-
-None.
 
 ## Example Playbook
 
@@ -37,9 +47,20 @@ None.
          - { role: etckeeper, etckeeper_vcs: darcs }
 
 
+## Contributing
+
+If you want to contribute to this repository please be aware that this
+project uses a [gitflow](http://nvie.com/posts/a-successful-git-branching-model/)
+workflow with the next release branch called ``next``.
+
+Please fork this repository and create a local branch split off of the ``next``
+branch and create pull requests back to the origin ``next`` branch.
+
+
 ## License
 
 Apache Version 2.0
+
 
 ## Integration testing
 
@@ -75,6 +96,7 @@ Mark Kusch @mark.kusch silpion.de
 Thanks for their thoughts and work goes to...
 
 * [Karl Goetz](https://github.com/goetzk)
+* [ypid](https://github.com/ypid)
 
 
 <!-- vim: set nofen ts=4 sw=4 et: -->
