@@ -23,3 +23,8 @@ etckeeper_gitignore:
   - 'tor/keys/'
 etckeeper_gitignore_group: []
 etckeeper_gitignore_host: []
+
+# Enforce permissions for the VCS repository.
+etckeeper_repository_user: root
+etckeeper_repository_group: root
+etckeeper_repository_permissions_mode: '0750'
