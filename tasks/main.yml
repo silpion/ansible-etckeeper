@@ -39,6 +39,17 @@
     group=0
     mode=0644
 
+- name: Install .gitattributes configuration
+  tags: etckeeper
+  become: true
+  template:
+    src=etckeeper.gitattributes.j2
+    dest=/etc/.gitattributes
+    owner=0
+    group=0
+    mode=0644
+  when: etckeeper_vcs == 'git'
+
 
 - name: Install etckeeper packages
   tags: etckeeper
