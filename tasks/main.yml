@@ -68,3 +68,17 @@
     dest='/etc/.gitignore'
     line="{{ item }}"
     insertbefore='BOF'
+
+- name: Set repository permissions
+  tags: etckeeper
+  become: true
+  file:
+    state: directory
+    path: '{{ item.path }}'
+    mode: '{{ etckeeper_repository_permissions_mode }}'
+    owner: '{{ etckeeper_repository_user }}'
+    group: '{{ etckeeper_repository_group }}'
+  when: etckeeper_vcs == item.vcs|default('git')
+  with_items:
+    - vcs: git
+      path: /etc/.git
