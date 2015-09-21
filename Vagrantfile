@@ -6,6 +6,8 @@ VAGRANT_API_VERSION = '2'
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
   config.vm.box = 'ubuntu/trusty64'
+  #config.vm.box = 'chef/centos-6.6'
+  #config.vm.box = 'chef/centos-7.0'
 
   config.vm.define :ansibleetckeepertest do |d|
 
