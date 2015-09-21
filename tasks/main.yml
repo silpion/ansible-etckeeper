@@ -21,7 +21,7 @@
 #   This ensures initialization of etckeeper uses the configured values.
 - name: Install etckeeper configuration directory
   tags: etckeeper
-  become: true
+  become: false
   file:
     state=directory
     dest=/etc/etckeeper
@@ -31,7 +31,7 @@
 
 - name: Install etckeeper configuration
   tags: etckeeper
-  become: true
+  become: false
   template:
     src=etckeeper.j2
     dest=/etc/etckeeper/etckeeper.conf
@@ -42,7 +42,7 @@
 
 - name: Install etckeeper packages
   tags: etckeeper
-  become: true
+  become: false
   with_flattened:
     - etckeeper_vcs
     - etckeeper_package_list
@@ -58,7 +58,7 @@
 
 - name: Add entries to .gitignore
   tags: etckeeper
-  become: true
+  become: false
   when: etckeeper_vcs == 'git'
   with_flattened:
     - etckeeper_gitignore
