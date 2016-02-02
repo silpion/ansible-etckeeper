@@ -72,3 +72,10 @@
     dest: '/etc/.gitignore'
     line: "{{ item }}"
     insertbefore: 'BOF'
+
+
+- name: Include local facts management
+  tags: etckeeper
+  include: ../../silpion.lib/tasks/localfacts.yml
+  vars:
+    namespace: etckeeper
