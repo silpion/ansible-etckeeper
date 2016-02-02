@@ -16,6 +16,15 @@
   tags: etckeeper
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Include --check mode detection
+  tags: etckeeper
+  include: ../../silpion.lib/tasks/checkmodedetection.yml
+
+- name: Detect --check mode on initial run
+  tags: etckeeper
+  set_fact:
+    etckeeper_fact_initial_check_mode: "{{ (ansible_local|default({})).etckeeper|default(false) or not lib_fact_check_mode }}"
+
 
 # Install the configuration first.
 #   This ensures initialization of etckeeper uses the configured values.
@@ -43,12 +52,13 @@
 - name: Install etckeeper packages
   tags: etckeeper
   become: true
+  when: etckeeper_fact_initial_check_mode
   with_flattened:
     - etckeeper_vcs
     - etckeeper_package_list
   action: "{{ ansible_pkg_mgr }}"
   args:
-    state: "{{ util_package_state }}"
+    state: "{{ etckeeper_package_state }}"
     name: "{{ item }}"
 
 
@@ -63,7 +73,9 @@
 - name: Add entries to .gitignore
   tags: etckeeper
   become: true
-  when: etckeeper_vcs == 'git'
+  when:
+    - etckeeper_vcs == 'git'
+    - etckeeper_fact_initial_check_mode
   with_flattened:
     - etckeeper_gitignore
     - etckeeper_gitignore_group
