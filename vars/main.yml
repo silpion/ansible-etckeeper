@@ -11,4 +11,3 @@ etckeeper_supported_vcs:
   - mercurial
   - bzr
   - darcs
-
