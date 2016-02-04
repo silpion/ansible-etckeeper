@@ -23,7 +23,7 @@
 - name: Detect --check mode on initial run
   tags: etckeeper
   set_fact:
-    etckeeper_fact_initial_check_mode: "{{ (ansible_local|default({})).etckeeper|default(false) or not lib_fact_check_mode }}"
+    etckeeper_fact_is_not_initial_check_mode: "{{ ((ansible_local|default({})).etckeeper|default(false))|bool or not lib_fact_check_mode }}"
 
 
 # Install the configuration first.
@@ -52,7 +52,7 @@
 - name: Install etckeeper packages
   tags: etckeeper
   become: true
-  when: etckeeper_fact_initial_check_mode
+  when: etckeeper_fact_is_not_initial_check_mode
   with_flattened:
     - etckeeper_vcs
     - etckeeper_package_list
@@ -75,7 +75,7 @@
   become: true
   when:
     - etckeeper_vcs == 'git'
-    - etckeeper_fact_initial_check_mode
+    - etckeeper_fact_is_not_initial_check_mode
   with_flattened:
     - etckeeper_gitignore
     - etckeeper_gitignore_group
