@@ -23,7 +23,7 @@
 - name: Detect --check mode on initial run
   tags: etckeeper
   set_fact:
-    etckeeper_fact_is_not_initial_check_mode: "{{ ((ansible_local|default({})).etckeeper|default(false))|bool or not lib_fact_check_mode }}"
+    etckeeper_fact_is_not_initial_check_mode: "{{ true if ((ansible_local|default({})).etckeeper is defined or not lib_fact_check_mode) else false }}"
 
 
 # Install the configuration first.
