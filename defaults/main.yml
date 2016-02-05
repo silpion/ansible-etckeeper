@@ -23,3 +23,5 @@ etckeeper_gitignore:
   - 'tor/keys/'
 etckeeper_gitignore_group: []
 etckeeper_gitignore_host: []
+
+etckeeper_package_state: "{{ util_package_state|default('installed') }}"
