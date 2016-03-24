@@ -44,7 +44,7 @@ variables.
 
     - hosts: servers
       roles:
-         - { role: etckeeper, etckeeper_vcs: darcs }
+         - { role: groover.etckeeper, etckeeper_vcs: darcs }
 
 
 ## Contributing
