@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - { role: silpion.util }
+  - { role: groover.util }
 
 galaxy_info:
   author: Mark Kusch
