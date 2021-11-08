@@ -1,6 +1,6 @@
 ---
-dependencies:
-  - { role: silpion.util }
+#dependencies:
+#  - { role: silpion.util }
 
 galaxy_info:
   author: Mark Kusch
