@@ -1,4 +1,7 @@
 ---
+# lookup role version
+etckeeper_role_version: "{{ lookup('file', role_path + '/VERSION') }}"
+
 etckeeper_supported_platforms:
   - Debian
   - RedHat

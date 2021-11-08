@@ -16,6 +16,15 @@
   tags: etckeeper
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Include --check mode detection
+  tags: etckeeper
+  include: ../../silpion.lib/tasks/checkmodedetection.yml
+
+- name: Detect --check mode on initial run
+  tags: etckeeper
+  set_fact:
+    etckeeper_fact_is_not_initial_check_mode: "{{ true if ((ansible_local|default({})).etckeeper is defined or not lib_fact_check_mode) else false }}"
+
 
 # Install the configuration first.
 #   This ensures initialization of etckeeper uses the configured values.
@@ -23,21 +32,21 @@
   tags: etckeeper
   become: false
   file:
-    state=directory
-    dest=/etc/etckeeper
-    owner=0
-    group=0
-    mode=0755
+    state: directory
+    dest: /etc/etckeeper
+    owner: 0
+    group: 0
+    mode: 0755
 
 - name: Install etckeeper configuration
   tags: etckeeper
   become: false
   template:
-    src=etckeeper.j2
-    dest=/etc/etckeeper/etckeeper.conf
-    owner=0
-    group=0
-    mode=0644
+    src: etckeeper.j2
+    dest: /etc/etckeeper/etckeeper.conf
+    owner: 0
+    group: 0
+    mode: 0644
 
 
 - name: Install etckeeper packages
@@ -47,24 +56,36 @@
     - "{{ etckeeper_vcs }}"
     - "{{ etckeeper_package_list }}"
   action: "{{ ansible_pkg_mgr }} state={{ util_package_state }} name={{ item }}"
+  when: etckeeper_fact_is_not_initial_check_mode
+
 
 
 - name: Initialize etckeeper
   tags: etckeeper
-  become: true
+  become: false
   when: ansible_os_family == 'RedHat'
   command: etckeeper init
-    creates=/etc/.etckeeper
+  args:
+    creates: /etc/.etckeeper
 
 - name: Add entries to .gitignore
   tags: etckeeper
   become: false
-  when: etckeeper_vcs == 'git'
+    when:
+    - etckeeper_vcs == 'git'
+    - etckeeper_fact_is_not_initial_check_mode
   with_flattened:
     - etckeeper_gitignore
     - etckeeper_gitignore_group
     - etckeeper_gitignore_host
   lineinfile:
-    dest='/etc/.gitignore'
-    line="{{ item }}"
-    insertbefore='BOF'
+    dest: '/etc/.gitignore'
+    line: "{{ item }}"
+    insertbefore: 'BOF'
+
+
+#- name: Include local facts management
+#  tags: etckeeper
+#  include: ../../silpion.lib/tasks/localfacts.yml
+#  vars:
+#    namespace: etckeeper

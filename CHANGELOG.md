@@ -1,3 +1,19 @@
+# 2.0.0
+Anja Siek (2):
+
+* update role generator
+* update required ansible version
+
+Mark Kusch (7):
+
+* Remove useless whitespace
+* Enforce Silpion style guide
+* Add local facts
+* Wrap util package state configuration
+* Add complete support for --check --tags etckeeper
+* Be more specific/clean with fact variable naming
+* Perform boolean compare to generate booleans
+
 # 0.4.0
 
 Mark Kusch (10):
